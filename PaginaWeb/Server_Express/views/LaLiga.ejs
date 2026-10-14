@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Football&CO</title>
+    <!--CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+<!--Headers -->
+<header class="p-3 text-bg-dark">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img src="images/logo_giallo.png" alt="Logo sito" width="32">
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+                <li><a href="/Games" class="nav-link px-2 text-white">Partite</a></li>
+                <li>
+                    <div class="dropdown text-end">
+                        <a href="#" class="nav-link px-2 text-white" data-bs-toggle="dropdown" aria-expanded="false">Statistiche</a>
+                        <ul class="dropdown-menu text-small" style="">
+                            <li><a class="dropdown-item" href="/Goal_xG">xG (Goal previsti)</a></li>
+                            <li><a class="dropdown-item" href="#">Goal Over/Under</a></li>
+                            <li><a class="dropdown-item" href="/Goal_BTTS">Statistiche BTTS</a></li>
+                            <li><a class="dropdown-item" href="#">Goal 1°/2° Tempo</a></li>
+                            <li><a class="dropdown-item" href="#">Goal in entrambi i tempi</a></li>
+                            <li><a class="dropdown-item" href="#">Calci d'angolo</a></li>
+                            <li><a class="dropdown-item" href="#">Cartellini</a></li>
+                            <li><a class="dropdown-item" href="#">Scarica CSV</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="/Players" class="nav-link px-2 text-white">Calciatori</a></li>
+                <li><a href="/Teams" class="nav-link px-2 text-white">Squadre</a></li>
+                <li>
+                    <div class="dropdown text-end">
+                        <a href="#" class="nav-link px-2 text-white" data-bs-toggle="dropdown" aria-expanded="false">Campionati</a>
+                        <ul class="dropdown-menu text-small" style="">
+                            <li><a class="dropdown-item" href="/Champions_League">Champions League</a></li>
+                            <li><a class="dropdown-item" href="/Premier_League">Premier League</a></li>
+                            <li><a class="dropdown-item" href="/Serie_A">Serie A</a></li>
+                            <li><a class="dropdown-item" href="/LaLiga">LaLiga</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#" class="nav-link px-2 text-white">Forum</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Chi siamo</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control form-control-dark" placeholder="Ricerca..." aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                <a href="/login" class="btn btn-outline-light me-2">Login</a>
+                <a href="/signup" class="btn btn-secondary">Sign-up</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--Main body -->
+<div class="container my-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Campionati</li>
+            <li class="breadcrumb-item active" aria-current="page">LaLiga</li>
+        </ol>
+    </nav>
+</div>
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-tertiary">
+        <div class="row">
+            <div class="feature col"style="flex: 0 0 10%;">
+                <span class="fs-4">Filtri</span>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="my-1">
+                        <div class="form-check">
+                            <input id="games" name="championView" type="radio" class="form-check-input" required="">
+                            <label class="form-check-label" for="games">Partite</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="classification" name="championView" type="radio" class="form-check-input" required="">
+                            <label class="form-check-label" for="classification">Classifica</label>
+                        </div>
+                    </li>
+                </ul>
+                <hr>
+                <button class="btn btn-primary btn-lg" type="submit">conferma</button>
+            </div>
+            <div class="feature col">
+                <h1>LaLiga</h1>
+                <div class="row">
+                    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
+                        <div class="table-responsive small">
+                            <p>Inserire tabella</p>
+                            <table class="table table-striped table-sm">
+                                <thead>
+                                <tr>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <h2>Cos'è la LaLiga?</h2>
+                <p>La Primera División, ufficialmente Campeonato Nacional de LaLiga de Primera División (commercialmente anche LaLaLiga EA Sports), è la massima serie
+                    del campionato spagnolo di calcio, gestita dalla LaLiga de Fútbol Profesional.</p>
+                <p>La squadra più titolata della competizione è il Real Madrid con 36 successi, seguita dal Barcellona e dall'Atlético Madrid, rispettivamente con
+                    27 e 11 successi.</p>
+               <p>Al termine della stagione 2019-2020 la Primera División occupava il 1º posto nel ranking UEFA per competizioni di club. Nel 2020 si era posizionata
+                    al 4º posto della classifica mondiale dei campionati stilata annualmente dall'IFFHS (3º a livello continentale).
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+</div>
+
+
+
+<!--Footer -->
+<footer class="py-5 text-center text-body bg-body-tertiary">
+    <img src="images/logo_giallo.png" alt="Logo sito" width="32">
+    <p>Sito sviluppato da <a href="andrea.argentero347@edu.unito.it">Andrea Argentero</a> e <a href="giulia.bono116@edu.unito.it">Giulia Bono</a>.</p>
+    <p class="mb-0">
+        <a href="#">Torna su</a>
+    </p>
+</footer>
+
+</body>
+</html>

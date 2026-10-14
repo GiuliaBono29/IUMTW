@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Football&CO</title>
+    <!--CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="javascripts/Goal_BTTS.js"></script>
+</head>
+
+<body onload="init()">
+<!--Headers -->
+<header class="p-3 text-bg-dark">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img src="images/logo_giallo.png" alt="Logo sito" width="32">
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+                <li><a href="/Games" class="nav-link px-2 text-white">Partite</a></li>
+                <li>
+                    <div class="dropdown text-end">
+                        <a href="#" class="nav-link px-2 text-white" data-bs-toggle="dropdown" aria-expanded="false">Statistiche</a>
+                        <ul class="dropdown-menu text-small" style="">
+                            <li><a class="dropdown-item" href="/Goal_xG">xG (Goal previsti)</a></li>
+                            <li><a class="dropdown-item" href="#">Goal Over/Under</a></li>
+                            <li><a class="dropdown-item" href="/Goal_BTTS">Statistiche BTTS</a></li>
+                            <li><a class="dropdown-item" href="#">Goal 1°/2° Tempo</a></li>
+                            <li><a class="dropdown-item" href="#">Goal in entrambi i tempi</a></li>
+                            <li><a class="dropdown-item" href="#">Calci d'angolo</a></li>
+                            <li><a class="dropdown-item" href="#">Cartellini</a></li>
+                            <li><a class="dropdown-item" href="#">Scarica CSV</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="/Players" class="nav-link px-2 text-white">Calciatori</a></li>
+                <li><a href="/Teams" class="nav-link px-2 text-white">Squadre</a></li>
+                <li>
+                    <div class="dropdown text-end">
+                        <a href="#" class="nav-link px-2 text-white" data-bs-toggle="dropdown" aria-expanded="false">Campionati</a>
+                        <ul class="dropdown-menu text-small" style="">
+                            <li><a class="dropdown-item" href="/Champions_League">Champions League</a></li>
+                            <li><a class="dropdown-item" href="/Premier_League">Premier League</a></li>
+                            <li><a class="dropdown-item" href="/Serie_A">Serie A</a></li>
+                            <li><a class="dropdown-item" href="/LaLiga">LaLiga</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#" class="nav-link px-2 text-white">Forum</a></li>
+                <li><a href="/testDB" class="nav-link px-2 text-white">testDB</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <label for="search-input" class="visually-hidden">Ricerca</label>
+                <input type="search" id="search-input" class="form-control form-control-dark" placeholder="Ricerca..." aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                <button id="login" value="Login" class="btn btn-outline-light me-2">Login</button>
+                <button id="signup" value="Signup" class="btn btn-warning">Sign-up</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--Main body -->
+<div class="container my-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Statistiche BTTS</li>
+        </ol>
+    </nav>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="flex: 0 0 12%;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span class="fs-4">Goals</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li><a href="/Goal_xG" class="nav-link link-body-emphasis" aria-current="page">xG (Goal previsti)</a></li>
+                <li><a href="#" class="nav-link link-body-emphasis" aria-current="page">Goal Over/Under</a></li>
+                <li class="nav-item"><a href="/Goal_BTTS" class="nav-link active" aria-current="page">Statistiche BBTS</a></li>
+                <li><a href="#" class="nav-link link-body-emphasis" aria-current="page">1°/2° Tempo</a></li>
+                <li><a href="#" class="nav-link link-body-emphasis" aria-current="page">Goal in entrambi i tempi</a></li>
+            </ul>
+        </div>
+        <main class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="flex: 0 0 87%;">
+            <h1>Statistiche BTTS</h1>
+            <p>BBTS (Both Teams to Score) è una metrica per indicare se entrambe le squadre hanno segnato almeno un goal ciascuna. </p>
+            <div id="container" class="row">
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
+                    <div class="table-responsive small">
+                        <table class="table table-striped table-sm" id="btts-table">
+                            <thead>
+                                <tr id="table-row">
+                                    <th>squadre con indice btts più alto</th>
+                                    <th>percentuale btts</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <h2>Analisi delle statistiche per BTTS</h2>
+            <p>Per fare previsioni accurate non basta scegliere le squadre con una percentuale di BTTS alta o bassa. Qui presentiamo tre
+                semplici punti da seguire per realizzare in modo preciso e corretto i tuoi pronostici.</p>
+            <ul>
+                <li>
+                    <p><strong>Volatilità dei goal:</strong>la statistica sul rischio pre-calcolato ti insegnerà quanto siano volatili la partite in termini di goal.</p>
+                </li>
+                <li>
+                    <p><strong>Goal nelle ultime 4-6 partite:</strong> ricorda che è fondamentale cercare per “forma recente”. Poniti sempre le domande: la squadra segna spesso?
+                        Se sì, con quale frequenza? La squadra ospite ha segnato nella maggior parte delle ultime partite in trasferta?</p>
+                </li>
+                <li>
+                    <p><strong>Percentuale BTTS:</strong> usa la nostra interfaccia per cercare facilmente le partite con un'alta probabilità che si verifichino BTTS.</p>
+                </li>
+            </ul>
+        </main>
+    </div>
+</div>
+
+
+
+<!--Footer -->
+<footer class="py-5 text-center text-body bg-body-tertiary">
+    <img src="images/logo_giallo.png" alt="Logo sito" width="32">
+    <p>Sito sviluppato da <a href="andrea.argentero347@edu.unito.it">Andrea Argentero</a> e <a href="giulia.bono116@edu.unito.it">Giulia Bono</a>.</p>
+    <p class="mb-0">
+        <a href="#">Torna su</a>
+    </p>
+</footer>
+
+</body>
+</html>

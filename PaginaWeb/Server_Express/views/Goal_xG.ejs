@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Football&CO</title>
+    <!--CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="javascripts/Goal_xg.js"></script>
+</head>
+
+<body onload="init()">
+<!--Headers -->
+<header class="p-3 text-bg-dark">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img src="images/logo_giallo.png" alt="Logo sito" width="32">
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+                <li><a href="/Games" class="nav-link px-2 text-white">Partite</a></li>
+                <li>
+                    <div class="dropdown text-end">
+                        <a href="#" class="nav-link px-2 text-white" data-bs-toggle="dropdown" aria-expanded="false">Statistiche</a>
+                        <ul class="dropdown-menu text-small" style="">
+                            <li><a class="dropdown-item" href="/Goal_xG">xG (Goal previsti)</a></li>
+                            <li><a class="dropdown-item" href="#">Goal Over/Under</a></li>
+                            <li><a class="dropdown-item" href="/Goal_BTTS">Statistiche BTTS</a></li>
+                            <li><a class="dropdown-item" href="#">Goal 1°/2° Tempo</a></li>
+                            <li><a class="dropdown-item" href="#">Goal in entrambi i tempi</a></li>
+                            <li><a class="dropdown-item" href="#">Calci d'angolo</a></li>
+                            <li><a class="dropdown-item" href="#">Cartellini</a></li>
+                            <li><a class="dropdown-item" href="#">Scarica CSV</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="/Players" class="nav-link px-2 text-white">Calciatori</a></li>
+                <li><a href="/Teams" class="nav-link px-2 text-white">Squadre</a></li>
+                <li>
+                    <div class="dropdown text-end">
+                        <a href="#" class="nav-link px-2 text-white" data-bs-toggle="dropdown" aria-expanded="false">Campionati</a>
+                        <ul class="dropdown-menu text-small" style="">
+                            <li><a class="dropdown-item" href="/Champions_League">Champions League</a></li>
+                            <li><a class="dropdown-item" href="/Premier_League">Premier League</a></li>
+                            <li><a class="dropdown-item" href="/Serie_A">Serie A</a></li>
+                            <li><a class="dropdown-item" href="/LaLiga">LaLiga</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#" class="nav-link px-2 text-white">Forum</a></li>
+                <li><a href="/testDB" class="nav-link px-2 text-white">testDB</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <label for="search-input" class="visually-hidden">Ricerca</label>
+                <input type="search" id="search-input" class="form-control form-control-dark" placeholder="Ricerca..." aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                <button id="login" value="Login" class="btn btn-outline-light me-2">Login</button>
+                <button id="signup" value="Signup" class="btn btn-warning">Sign-up</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--Main body -->
+<div class="container my-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Goal xG</li>
+        </ol>
+    </nav>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="flex: 0 0 12%;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span class="fs-4">Goals</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item"><a href="/Goal_xG" class="nav-link active" aria-current="page">xG (Goal previsti)</a></li>
+                <li><a href="#" class="nav-link link-body-emphasis" aria-current="page">Goal Over/Under</a></li>
+                <li><a href="/Goal_BTTS" class="nav-link link-body-emphasis" aria-current="page">Statistiche BTTS</a></li>
+                <li><a href="#" class="nav-link link-body-emphasis" aria-current="page">1°/2° Tempo</a></li>
+                <li><a href="#" class="nav-link link-body-emphasis" aria-current="page">Goal in entrambi i tempi</a></li>
+            </ul>
+        </div>
+        <main class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="flex: 0 0 87%;">
+            <h1>Goal xG</h1>
+            <p>Gli Expected Goals (xG) sono una metrica progettata per quantificare la probabilità che un tiro si traduca in un gol.
+                Un modello xG utilizza le informazioni storiche di migliaia di tiri con caratteristiche simili per stimare la probabilità che il goal si verifichi su una scala compresa tra 0 e 1.</p>
+
+
+            <div class="row">
+                <!--Tabella xG campionati-->
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="flex: 0 0 33%;">
+                    <div class="table-responsive small">
+                        <p style="font-weight: bold;">campionati con indice xG</p>
+                        <table class="table table-striped table-sm">
+                            <thead>
+                            <tr>
+                                <th scope="col">Campionato</th>
+                                <th scope="col">Valore</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Champions League</td>
+                                <td>4.83</td>
+                            </tr>
+                            <tr>
+                                <td>Premier League</td>
+                                <td>4.72</td>
+                            </tr>
+                            <tr>
+                                <td>La Liga</td>
+                                <td>4.47</td>
+                            </tr>
+                            <tr>
+                                <td>Serie A</td>
+                                <td>4.36</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!--Tabella xG squadre-->
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="flex: 0 0 33%;">
+                    <div class="table-responsive small">
+                        <p style="font-weight: bold;">squadre con indice xG</p>
+                        <table class="table table-striped table-sm">
+                            <thead>
+                            <tr>
+                                <th scope="col">Squadra</th>
+                                <th scope="col">Valore</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Napoli</td>
+                                <td>6.90</td>
+                            </tr>
+                            <tr>
+                                <td>Parma</td>
+                                <td>5.31</td>
+                            </tr>
+                            <tr>
+                                <td>Sassuolo</td>
+                                <td>4.93</td>
+                            </tr>
+                            <tr>
+                                <td>Atlanta</td>
+                                <td>4.64</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!--Tabella partite recenti con xG elevato-->
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="flex: 0 0 33%;">
+                    <div class="table-responsive small">
+                        <p style="font-weight: bold;">partite recenti con xG elevato</p>
+                        <table class="table table-striped table-sm">
+                            <thead>
+                            <tr>
+                                <th scope="col">Appuntamento</th>
+                                <th scope="col">Casa</th>
+                                <th scope="col">Ospite</th>
+                                <th scope="col">Totale</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Juventus vs Milan. 25 Giu</td>
+                                <td>17.75</td>
+                                <td>0.95</td>
+                                <td>18.7</td>
+                            </tr>
+                            <tr>
+                                <td>Roma vs Inter. 29 Mag</td>
+                                <td>1.85</td>
+                                <td>16.71</td>
+                                <td>18.56</td>
+                            </tr>
+                            <tr>
+                                <td>Napoli vs Lazio. 7 Lug</td>
+                                <td>16.54</td>
+                                <td>1.78</td>
+                                <td>18.32</td>
+                            </tr>
+                            <tr>
+                                <td>Fiorentina vs Atlanta. 2 Mag</td>
+                                <td>1.54</td>
+                                <td>16.57</td>
+                                <td>18.11</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <h2>Quanto è importante l'xG?</h2>
+            <p><i>"Non tutti i tiri in porta sono uguali"</i></p>
+            <p>-Alan Rider</p>
+            <p>Alan Rider fu il primo a misurare la qualità di un tiro (non solo nel Calcio). Grazie alla sua ricerca oggi fanatici sportivi, esperti e guru creano molti
+                modelli per la creazione di xG. L'xG misura la qualità del tiro effettuato da una squadra, i cui fattori possono essere:</p>
+            <ul>
+                <li><p>Tipo di assist</p></li>
+                <li><p>Distanza dalla porta</p></li>
+                <li><p>Tipo di attacco</p></li>
+                <li><p>Angolo di tiro</p></li>
+                <li><p>Parte del corpo utilizzata per tirare</p></li>
+            </ul>
+            <p>Negli ultimi anni l'xG è stato uno dei fattori maggiormente utilizzati dai tifosi e dalle squadre stesse per valutare le avversarie. permette di verificare quanto una squadra è
+                pericoloso, su cosa dovrebbe investire e cosa dovrebbe migliorare!</p>
+        </main>
+    </div>
+</div>
+
+<!--Footer -->
+<footer class="py-5 text-center text-body bg-body-tertiary">
+    <img src="images/logo_giallo.png" alt="Logo sito" width="32">
+    <p>Sito sviluppato da <a href="andrea.argentero347@edu.unito.it">Andrea Argentero</a> e <a href="giulia.bono116@edu.unito.it">Giulia Bono</a>.</p>
+    <p class="mb-0">
+        <a href="#">Torna su</a>
+    </p>
+</footer>
+
+</body>
+</html>
