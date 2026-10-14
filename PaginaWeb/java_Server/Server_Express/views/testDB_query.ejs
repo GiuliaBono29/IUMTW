@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query A Football Game</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/javascripts/testDB.js"></script>
+</head>
+<body>
+<h1>Insert two Team</h1>
+<!--first_name: {type: String, required: true, max: 100},
+        family_name: {type: String, required: true, max: 100},
+        dob-->
+<form id="xForm" >
+    <label for="firstName">first Name:</label>
+    <input type="text" id="firstName" name="firstName"><br><br>
+    <label for="lastName">last Name:</label>
+    <input type="text" id="lastName" name="lastName"><br><br>
+    <button id="submit_q" value="Submit">Submit</button>
+</form>
+
+<div id="results">
+</div>
+</body>
+</html>
